@@ -1,29 +1,53 @@
-import Autoplay from "embla-carousel-autoplay"
-import { Card, CardContent } from "@/components/ui/card"
+import Autoplay from "embla-carousel-autoplay";
+
 import {
   Carousel,
   CarouselContent,
   CarouselItem,
   CarouselNext,
   CarouselPrevious,
-} from "@/components/ui/carousel"
+} from "@/components/ui/carousel";
+import type { Product } from "@/types";
 
-export function CarouselCard() {
+import { Link } from "react-router";
+
+interface ProductProps {
+  Products: Product[];
+}
+
+export function CarouselCard({ Products }: ProductProps) {
   return (
-    <Carousel className="w-full max-w-sm" plugins={[
+    <Carousel
+      className="w-full"
+      plugins={[
         Autoplay({
           delay: 2000,
         }),
-      ]}>
+      ]}
+    >
       <CarouselContent className="-ml-1">
-        {Array.from({ length: 5 }).map((_, index) => (
-          <CarouselItem key={index} className="pl-1 md:basis-1/2 lg:basis-1/3">
-            <div className="p-1">
-              <Card>
-                <CardContent className="flex aspect-square items-center justify-center p-6">
-                  <span className="text-2xl font-semibold">{index + 1}</span>
-                </CardContent>
-              </Card>
+        {Products.map((product) => (
+          <CarouselItem key={product.id} className="pl-1 lg:basis-1/3">
+            <div className="flex gap-4 p-1 lg:px-4">
+              <img
+                src={product.images[0]}
+                alt={product.name}
+                className="size-28 rounded-md"
+              />
+              <div className="">
+                <h3 className="line-clamp-1 text-sm font-bold">
+                  {product.name}
+                </h3>
+                <p className="mt-2 line-clamp-2 text-sm text-gray-600">
+                  {product.description}
+                </p>
+                <Link
+                  className="text-own text-sm font-semibold hover:underline"
+                  to={`/products/${product.id}`}
+                >
+                  Read more
+                </Link>
+              </div>
             </div>
           </CarouselItem>
         ))}
@@ -31,5 +55,5 @@ export function CarouselCard() {
       <CarouselPrevious />
       <CarouselNext />
     </Carousel>
-  )
+  );
 }

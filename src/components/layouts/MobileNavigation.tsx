@@ -67,7 +67,7 @@ const MobileNavigation = ({ items }: MainNavigaiontProps) => {
                 <AccordionTrigger>{items?.[0].title}</AccordionTrigger>
                 <AccordionContent>
                   {items?.[0].card?.map((item)=>(
-                    <SheetClose className="flex mt-2">
+                    <SheetClose key={item.title} className="flex mt-2">
                       <Link to={String(item.href)}>{item.title}</Link>
                     </SheetClose>
                   ) )}
@@ -76,7 +76,7 @@ const MobileNavigation = ({ items }: MainNavigaiontProps) => {
             </Accordion>
             <div className="flex flex-col space-y-2  mt-4">
                   {items?.[0].menu?.map((item)=>(
-                     <SheetClose className="flex ">
+                     <SheetClose key={item.title} className="flex ">
                       <Link to={String(item.href)}>{item.title}</Link>
                     </SheetClose>
                   ))}

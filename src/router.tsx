@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
         ErrorBoundary: error,
       },
       {
-        path: "blog",
+        path: "blogs",
         Component: blogLayout,
         ErrorBoundary: error,
         children: [

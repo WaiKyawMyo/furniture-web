@@ -64,7 +64,7 @@ const MainNavigation = ({ items }: MainNavigaiontProps) => {
           )}
           {items?.[0]?.menu &&
             items[0].menu?.map((item) => (
-              <NavigationMenuItem>
+              <NavigationMenuItem key={item.title}>
                 <NavigationMenuLink
                   asChild
                   className={navigationMenuTriggerStyle()}
