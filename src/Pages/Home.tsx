@@ -1,5 +1,6 @@
 import BlogCard from "@/components/blogs/BlogCard";
 import { CarouselCard } from "@/components/Product/Carouselcard";
+import ProductCard from "@/components/Product/ProductCard";
 import { Button } from "@/components/ui/button";
 import couch from "@/data/images/midcentury-modern-grey-sofa-with-wooden-frame.png";
 import { posts } from "@/data/posts";
@@ -7,6 +8,7 @@ import { products } from "@/data/product";
 import { Link } from "react-router";
 
 const samplePosts = posts.slice(0,3)
+const sampleProducts = products.slice(0,4)
 
 const Home = () => {
   const Title = ({
@@ -55,6 +57,16 @@ const Home = () => {
         <img className="mx-auto w-full lg:w-3/5" src={couch} alt="Couch" />
       </div>
       <CarouselCard Products={products} />
+      <Title title="Featured Products" href="/products" sideText="View All Products"/>
+      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+        {sampleProducts.map((product)=>(
+        <ProductCard product={product}/>
+      ))
+        
+      }
+      </div>
+      
+        
       <Title title="Recent Blog" href="/blogs" sideText="View All Posts"/>
       <BlogCard posts={samplePosts} />
     </div>

@@ -4,6 +4,7 @@ import {
   PaperPlaneIcon,
   ArrowLeftIcon,
   LayersIcon,
+  PlusIcon,
   ExclamationTriangleIcon,
 } from "@radix-ui/react-icons";
 
@@ -43,6 +44,7 @@ export const Icons = {
   paperPlain: PaperPlaneIcon,
   home: HomeIcon,
   layer:LayersIcon,
+  PlusIcon:PlusIcon,
   ArrowLeft:ArrowLeftIcon,
   HamburgerMenu: HamburgerMenuIcon,
   ExclamationTriangleIcon: ExclamationTriangleIcon,

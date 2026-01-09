@@ -23,7 +23,7 @@ export const blogDetail = () => {
               <div className="text-sm">
                 <span>
                   by <span className="font-[600]">{post.author}</span>on
-                  <span className="font-[600]">{post.updated_at}</span>
+                   <span className="font-[600]">{post.updated_at}</span>
                 </span>
               </div>
               <h3 className="text-base font-[400] my-6 ">{post.content}</h3>

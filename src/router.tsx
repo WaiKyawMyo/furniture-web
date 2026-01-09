@@ -7,6 +7,9 @@ import about from "./Pages/about";
 import blog from "./Pages/blogs/blog";
 import { blogDetail } from "./Pages/blogs/blogDetail";
 import blogLayout from "./Pages/blogs/blogLayout";
+import productRootLayout from "./Pages/product/productRootLayout";
+import productDetail from "./Pages/product/productDetail";
+import product from "./Pages/product/product";
 
 export const router = createBrowserRouter([
   {
@@ -34,9 +37,25 @@ export const router = createBrowserRouter([
             ErrorBoundary: error,
           },
           {
-            index:true,
-            Component:blog
-          }
+            index: true,
+            Component: blog,
+          },
+        ],
+      },
+      {
+        path: "products",
+        Component: productRootLayout,
+        ErrorBoundary: error,
+        children: [
+          {
+            path: ":productid",
+            Component: productDetail,
+            ErrorBoundary: error,
+          },
+          {
+            index: true,
+            Component: product,
+          },
         ],
       },
     ],
