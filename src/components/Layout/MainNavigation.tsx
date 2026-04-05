@@ -7,89 +7,61 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
+import type { MainNavItem } from "@/types";
 import { Link } from "react-router";
+import { Icons } from "../icons";
+import { siteConfig } from "@/config/site";
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Alert Dialog",
-    href: "/docs/primitives/alert-dialog",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "Hover Card",
-    href: "/docs/primitives/hover-card",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Progress",
-    href: "/docs/primitives/progress",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Scroll-area",
-    href: "/docs/primitives/scroll-area",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Tabs",
-    href: "/docs/primitives/tabs",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
-  {
-    title: "Tooltip",
-    href: "/docs/primitives/tooltip",
-    description:
-      "A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.",
-  },
-];
+interface MainnavigationProps {
+  items?: MainNavItem[];
+}
 
-const MainNavigation = () => {
+const MainNavigation = ({ items }: MainnavigationProps) => {
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Getting started</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="w-96">
-              <ListItem href="/docs" title="Introduction">
-                Re-usable components built with Tailwind CSS.
-              </ListItem>
-              <ListItem href="/docs/installation" title="Installation">
-                How to install dependencies and structure your app.
-              </ListItem>
-              <ListItem href="/docs/primitives/typography" title="Typography">
-                Styles for headings, paragraphs, lists...etc
-              </ListItem>
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem className="hidden md:flex">
-          <NavigationMenuTrigger>Components</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-2 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {components.map((component) => (
-                <ListItem
-                  key={component.title}
-                  title={component.title}
-                  href={component.href}
-                >
-                  {component.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuLink asChild className={navigationMenuTriggerStyle()}>
-            <Link href="/docs">Docs</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+    <div className="hidden lg:flex gap-6">
+      <Link to={"/"} className="items-center flex space-x-2">
+        <Icons.logo className="size-7" aria-hidden="true" />
+        <span className="font-bold ">{siteConfig.name}</span>
+        <span className="sr-only">Home</span>
+      </Link>
+
+      <NavigationMenu>
+        <NavigationMenuList>
+          {items?.[0].card ? (
+            <NavigationMenuItem>
+              <NavigationMenuTrigger>{items?.[0].title}</NavigationMenuTrigger>
+              <NavigationMenuContent>
+                <ul className="w-96">
+                  {items[0].card.map((item) => (
+                    <ListItem
+                      key={item.title}
+                      href={String(item.href)}
+                      title={item.title}
+                    >
+                      {item.description}
+                    </ListItem>
+                  ))}
+                </ul>
+              </NavigationMenuContent>
+            </NavigationMenuItem>
+          ) : null}
+
+          {items?.[0].menu && (
+            items[0].menu.map((item) => (
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className={navigationMenuTriggerStyle()}
+              >
+                <Link to={String(item.href)}>{item.title}</Link>
+
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+              ))
+          ) }
+        </NavigationMenuList>
+      </NavigationMenu>
+    </div>
   );
 };
 function ListItem({
@@ -101,9 +73,9 @@ function ListItem({
   return (
     <li {...props}>
       <NavigationMenuLink asChild>
-        <Link href={href}>
+        <Link to={href}>
           <div className="flex flex-col gap-1 text-sm">
-            <div className="leading-none font-medium">{title}</div>
+            <div className="leading-none font-medium"> {title}</div>
             <div className="line-clamp-2 text-muted-foreground">{children}</div>
           </div>
         </Link>

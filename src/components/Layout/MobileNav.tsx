@@ -1,8 +1,13 @@
+import type { MainNavItem } from "@/types";
+import { Link } from "react-router";
+import { Icons } from "../icons";
+import { siteConfig } from "@/config/site";
 
-const MobileNav = () => {
-  return (
-    <div>MobileNav</div>
-  )
+interface MainnavigationProps {
+  items?: MainNavItem[];
 }
+const MobileNav = ({items}: MainnavigationProps) => {
+  return <div>MobileNav</div>;
+};
 
-export default MobileNav
+export default MobileNav;
