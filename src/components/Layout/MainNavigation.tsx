@@ -18,7 +18,7 @@ interface MainnavigationProps {
 
 const MainNavigation = ({ items }: MainnavigationProps) => {
   return (
-    <div className="hidden lg:flex gap-6">
+    <div className="hidden lg:flex gap-6 ">
       <Link to={"/"} className="items-center flex space-x-2">
         <Icons.logo className="size-7" aria-hidden="true" />
         <span className="font-bold ">{siteConfig.name}</span>
