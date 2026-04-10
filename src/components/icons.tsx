@@ -1,4 +1,4 @@
-import {  HomeIcon, MenuIcon,  } from "lucide-react";
+import {  HomeIcon, MenuIcon,PlaneIcon,SendIcon } from "lucide-react";
  export type IconProps = React.HTMLAttributes<SVGElement>
 export const Icons = {
   logo: (props:IconProps) => (
@@ -19,4 +19,6 @@ export const Icons = {
   ),
   menu: MenuIcon,
   home: HomeIcon,
+  send:SendIcon
 };
+
