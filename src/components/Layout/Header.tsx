@@ -6,7 +6,7 @@ import { ModeToggle } from "../mode-toggle"
 
 const Header = () => {
   return (
-    <header className="w-full border-b">
+    <header className="w-full border-b fixed z-50 bg-background">
         <nav className="container flex items-center h-16 mx-auto">
          <MainNavigation items={siteConfig.mainNav}/>
         <MobileNav items={siteConfig.mainNav}/>

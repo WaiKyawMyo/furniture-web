@@ -16,19 +16,32 @@ import {
   Sheet,
   SheetClose,
   SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
+  
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { icons } from "lucide-react";
+import { useEffect, useState } from "react";
+
 
 interface MainnavigationProps {
   items?: MainNavItem[];
 }
 
 const MobileNav = ({ items }: MainnavigationProps) => {
+  const [isDesktop,setIsDesktop] = useState(false)
+  const query = "(min-width: 1024px)"
+  
+  useEffect(()=>{
+    function onchange(event:MediaQueryListEvent){
+      setIsDesktop(event.matches)
+    }
+    const result = matchMedia(query)
+    result.addEventListener("change",onchange)
+    return ()=>result.removeEventListener("change",onchange)
+  },[query])
+
+  if(isDesktop){
+    return null;
+  }
   return (
     <div className="lg:hidden ">
       <Sheet>
