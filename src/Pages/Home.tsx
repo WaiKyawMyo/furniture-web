@@ -1,9 +1,20 @@
+import BlogCard from "@/components/blogs/BlogCard";
 import CarouselPlugin from "@/components/products/CarouselCard";
 import { Button } from "@/components/ui/button";
 import Couch from "@/data/images/couch.png";
+import { posts } from "@/data/posts";
 import { products } from "@/data/products";
 import { Link } from "react-router";
+
+const samplePosts = posts.slice(0,3)
+
 const Home = () => {
+  const Title = ({title,href,sideText}:{title:string,href:string,sideText:string})=> (
+    <div className="px-4 md:px-0 lg:px-0 mt-28 mb-10 flex flex-col lg:flex-row lg:justify-between md:flex-row md:justify-between ">
+      <h2 className="text-2xl font-bold mb-4 md:mb-0">{title}</h2>
+      <Link className="text-muted-foreground font-semibold underline" to={href}>{sideText}</Link>
+    </div>
+  )
   return (
     <div className="container mx-auto">
       <div className=" flex flex-col lg:flex-row lg:justify-between ">
@@ -36,6 +47,8 @@ const Home = () => {
         <img className="w-full lg:3/5" src={Couch} alt="" />
       </div>
       <CarouselPlugin products={products}/>
+      <Title title="Recnt Blog" href="/blogs" sideText="View All Posts"/>
+      <BlogCard posts={samplePosts}/>
     </div>
   );
 };

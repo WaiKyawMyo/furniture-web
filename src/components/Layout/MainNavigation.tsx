@@ -46,19 +46,17 @@ const MainNavigation = ({ items }: MainnavigationProps) => {
             </NavigationMenuItem>
           ) : null}
 
-          {items?.[0].menu && (
+          {items?.[0].menu &&
             items[0].menu.map((item) => (
-            <NavigationMenuItem>
-              <NavigationMenuLink
-                asChild
-                className={navigationMenuTriggerStyle()}
-              >
-                <Link to={String(item.href)}>{item.title}</Link>
-
-              </NavigationMenuLink>
-            </NavigationMenuItem>
-              ))
-          ) }
+              <NavigationMenuItem key={item.title}>
+                <NavigationMenuLink
+                  asChild
+                  className={navigationMenuTriggerStyle()}
+                >
+                  <Link to={String(item.href)}>{item.title}</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
+            ))}
         </NavigationMenuList>
       </NavigationMenu>
     </div>
