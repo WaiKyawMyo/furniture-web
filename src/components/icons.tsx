@@ -1,4 +1,4 @@
-import {   ArrowLeftIcon, HomeIcon, LayersIcon, MenuIcon,SendIcon, TriangleAlertIcon ,} from "lucide-react";
+import {   ArrowLeftIcon, HomeIcon, LayersIcon, MenuIcon,PlusIcon,SendIcon, TriangleAlertIcon ,} from "lucide-react";
  export type IconProps = React.HTMLAttributes<SVGElement>
 export const Icons = {
   logo: (props:IconProps) => (
@@ -20,6 +20,7 @@ export const Icons = {
   menu: MenuIcon,
   home: HomeIcon,
   send:SendIcon,
+  Plus:PlusIcon,
   layers:LayersIcon,
   ArrowLeft: ArrowLeftIcon,
   Exclamation: TriangleAlertIcon

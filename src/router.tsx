@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router";
-import RootLayout from "./Pages/RootLayout";
 
 import Home from "./Pages/Home";
 import About from "./Pages/About";
@@ -7,6 +6,10 @@ import Error from "./Pages/Error";
 import Blog from "./Pages/blogs/Blog";
 import BlogDetail from "./Pages/blogs/BlogDetail";
 import BlogRootLayout from "./Pages/blogs/BlogRootLayout";
+import ProductRootLayout from "./Pages/products/ProductRootLayout";
+import RootLayout from "./Pages/RootLayout";
+import Product from "./Pages/products/Product";
+import ProductDetail from "./Pages/products/ProductDetail";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -33,6 +36,14 @@ const router = createBrowserRouter([
             path: ":postId",
             Component: BlogDetail,
           },
+        ],
+      },
+      {
+        path: "products",
+        Component: ProductRootLayout,
+        children: [
+          { index: true, Component: Product },
+          { path: ":productId", Component: ProductDetail },
         ],
       },
     ],
