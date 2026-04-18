@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/card";
 import { Link } from "react-router";
 import { Icons } from "../icons";
+import { formatPrices } from "@/lib/utils";
 interface ProductProps {
   product: Product;
 }
@@ -32,8 +33,8 @@ const ProductCard = ({ product }: ProductProps) => {
       </Link>
       <CardContent className="space-y-1.5 p-4 ">
         <CardTitle className="line-clamp-1">{product.name}</CardTitle>
-        <CardDescription className="line-clamp-1">${product.price} {product.discount>0 && (
-            <span className="ml-2 font-extralight line-through">{product.discount}</span>
+        <CardDescription className="line-clamp-1">{formatPrices(product.price) } {product.discount>0 && (
+            <span className="ml-2 font-extralight line-through">{formatPrices(product.discount)}</span>
         )}</CardDescription>
       </CardContent>
       <CardFooter className="p-4 pt-1 border-0">
