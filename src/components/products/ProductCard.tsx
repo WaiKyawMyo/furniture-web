@@ -11,15 +11,15 @@ import {
 } from "@/components/ui/card";
 import { Link } from "react-router";
 import { Icons } from "../icons";
-import { formatPrices } from "@/lib/utils";
-interface ProductProps {
+import { cn, formatPrices } from "@/lib/utils";
+interface ProductProps extends React.HTMLAttributes<HTMLDivElement>{
   product: Product;
 }
 
-const ProductCard = ({ product }: ProductProps) => {
+const ProductCard = ({ product,className }: ProductProps) => {
   return (
-    <Card className="size-full overflow-hidden rounded-lg gap-0">
-      <Link to={`/poducts/${product.id}`} aria-label={product.name}>
+    <Card className={cn("size-full overflow-hidden rounded-lg gap-0",className)}>
+      <Link to={`/products/${product.id}`} aria-label={product.name}>
         <CardHeader className="border-b p-0">
           <AspectRatio ratio={1 / 1} className="bg-muted">
             <img
