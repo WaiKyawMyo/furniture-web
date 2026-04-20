@@ -3,13 +3,16 @@ import { createBrowserRouter } from "react-router";
 import Home from "./Pages/Home";
 import About from "./Pages/About";
 import Error from "./Pages/Error";
-import Blog from "./Pages/blogs/Blog";
-import BlogDetail from "./Pages/blogs/BlogDetail";
-import BlogRootLayout from "./Pages/blogs/BlogRootLayout";
+
+// import Blog from "./Pages/blogs/Blog";
+// import BlogDetail from "./Pages/blogs/BlogDetail";
+// import BlogRootLayout from "./Pages/blogs/BlogRootLayout";
+
 import ProductRootLayout from "./Pages/products/ProductRootLayout";
 import RootLayout from "./Pages/RootLayout";
 import Product from "./Pages/products/Product";
 import ProductDetail from "./Pages/products/ProductDetail";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -26,15 +29,25 @@ const router = createBrowserRouter([
       },
       {
         path: "blogs",
-        Component: BlogRootLayout,
+        lazy: () =>
+          import("./Pages/blogs/BlogRootLayout").then((module) => ({
+            Component: module.default,
+          })),
+
         children: [
           {
             index: true,
-            Component: Blog,
+            lazy: () =>
+              import("./Pages/blogs/Blog").then((module) => ({
+                Component: module.default,
+              })),
           },
           {
             path: ":postId",
-            Component: BlogDetail,
+            lazy: () =>
+              import("./Pages/blogs/BlogDetail").then((module) => ({
+                Component: module.default,
+              })),
           },
         ],
       },

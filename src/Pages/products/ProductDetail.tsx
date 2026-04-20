@@ -15,6 +15,7 @@ import React from "react";
 import { formatPrices } from "@/lib/utils";
 import Rating from "@/components/products/Rating";
 import AddToFavourite from "@/components/products/AddToFavourite";
+import { AddToCard } from "@/components/products/AddToCard";
 
 const ProductDetail = () => {
   const plugin = React.useRef(
@@ -69,6 +70,7 @@ const ProductDetail = () => {
             <Rating rating={Number(product?.rating)}/>
             <AddToFavourite productId={String(product?.id)} rating={Number(product?.rating)} />
           </div>
+          <AddToCard showBuyNow={product?.status === "active" ? true: false} />
         </div>
       </section>
       <section className="space-y-6 overflow-hidden">
