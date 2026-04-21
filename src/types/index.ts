@@ -43,3 +43,14 @@ export type Category= {
  id:string,
  label:string
 }
+
+export type UserType = {
+  id: string,
+  firstName: string,
+  lastName: string,
+  username: string,
+  email: string,
+  imageUrl:
+    string,
+
+}

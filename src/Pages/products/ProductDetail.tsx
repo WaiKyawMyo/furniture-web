@@ -17,6 +17,13 @@ import Rating from "@/components/products/Rating";
 import AddToFavourite from "@/components/products/AddToFavourite";
 import { AddToCard } from "@/components/products/AddToCard";
 
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion";
+
 const ProductDetail = () => {
   const plugin = React.useRef(
     Autoplay({ delay: 2000, stopOnInteraction: true }),
@@ -67,10 +74,22 @@ const ProductDetail = () => {
             {product?.inventory} in stock
           </p>
           <div className="flex items-center justify-between">
-            <Rating rating={Number(product?.rating)}/>
-            <AddToFavourite productId={String(product?.id)} rating={Number(product?.rating)} />
+            <Rating rating={Number(product?.rating)} />
+            <AddToFavourite
+              productId={String(product?.id)}
+              rating={Number(product?.rating)}
+            />
           </div>
-          <AddToCard showBuyNow={product?.status === "active" ? true: false} />
+          <AddToCard showBuyNow={product?.status === "active"} />
+          <Separator className="mt-1.5 " />
+          <Accordion type="single" collapsible defaultValue="item-1" className="w-full">
+            <AccordionItem value="item-1" className="border-none">
+              <AccordionTrigger>Description</AccordionTrigger>
+              <AccordionContent>
+                {product?.description ?? "No descroption is avalable for this product."}
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
         </div>
       </section>
       <section className="space-y-6 overflow-hidden">

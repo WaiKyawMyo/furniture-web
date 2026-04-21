@@ -12,6 +12,8 @@ import ProductRootLayout from "./Pages/products/ProductRootLayout";
 import RootLayout from "./Pages/RootLayout";
 import Product from "./Pages/products/Product";
 import ProductDetail from "./Pages/products/ProductDetail";
+import Login from "./Pages/auth/Login";
+import Register from "./Pages/auth/Register";
 
 const router = createBrowserRouter([
   {
@@ -60,6 +62,14 @@ const router = createBrowserRouter([
         ],
       },
     ],
+  },
+  {
+    path: "/login",
+    Component: Login,
+  },
+  {
+    path: "/register",
+    Component: Register,
   },
 ]);
 
