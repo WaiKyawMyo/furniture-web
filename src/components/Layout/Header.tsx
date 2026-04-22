@@ -4,6 +4,7 @@ import MobileNav from "./MobileNav"
 import { ModeToggle } from "../mode-toggle"
 import AuthDropDown from "./AuthDropDown"
 import { User } from "@/data/user"
+import CartSheep from "./CartSheep"
 
 
 const Header = () => {
@@ -13,6 +14,7 @@ const Header = () => {
          <MainNavigation items={siteConfig.mainNav}/>
         <MobileNav items={siteConfig.mainNav}/>
         <div className="flex flex-1 items-center justify-end space-x-4 mr-8 lg:mr-0">
+          <CartSheep/>
           <ModeToggle />
           <AuthDropDown user={User}/>
         </div>

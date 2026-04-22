@@ -54,3 +54,21 @@ export type UserType = {
     string,
 
 }
+
+export type Cart = {
+ id: string,
+    name: string,
+    price: number,
+    quantity: number,
+    image: {
+      id: string,
+      name: string,
+      url: string,
+    },
+    category: string,
+    subcategory: string,
+
+}
+
+
+ 

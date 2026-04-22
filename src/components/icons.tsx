@@ -1,4 +1,4 @@
-import {   ArrowLeftIcon, HeartIcon, HomeIcon, LayersIcon, LayoutDashboardIcon, MenuIcon,MinusIcon,PlusIcon,SendIcon, StarIcon, TriangleAlertIcon ,LogOutIcon} from "lucide-react";
+import {   ArrowLeftIcon, HeartIcon, HomeIcon, LayersIcon, LayoutDashboardIcon, MenuIcon,MinusIcon,PlusIcon,SendIcon, StarIcon, TriangleAlertIcon ,LogOutIcon, ShoppingCartIcon, TrashIcon} from "lucide-react";
  export type IconProps = React.HTMLAttributes<SVGElement>
 export const Icons = {
   logo: (props:IconProps) => (
@@ -20,7 +20,7 @@ export const Icons = {
   dashboard:LayoutDashboardIcon,
   // Gear: ,
   Exit: LogOutIcon,
-
+ Cart:ShoppingCartIcon,
   star: StarIcon,
   minus:MinusIcon,
   heart:HeartIcon,
@@ -29,6 +29,7 @@ export const Icons = {
   send:SendIcon,
   Plus:PlusIcon,
   layers:LayersIcon,
+  trash:TrashIcon,
   ArrowLeft: ArrowLeftIcon,
   Exclamation: TriangleAlertIcon
 };
